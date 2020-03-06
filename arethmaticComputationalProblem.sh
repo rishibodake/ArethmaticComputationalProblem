@@ -4,6 +4,7 @@
 #Author:Hrishikesh M Bodake
 #Since:March 5 2020 /Thursday
 declare -A resultStore
+declare -a resultStoreInArray
 
 function getInputs(){
 	read -p "Enter first Number: " firstNumber
@@ -14,30 +15,33 @@ function getInputs(){
 function firstExpression(){
 	#Exrpession is a+b*c
 	firstResult=$((($firstNumber+$secondNumber*$thirdNumber)))
-	resultStore[firstResult]=$firstResult
+	resultStore[0]=$firstResult
 	secondExpression
 }
 function secondExpression(){
 	#Expression is a*b+c
 	secondResult=$((($firstNumber*$secondNumber+$thirdNumber)))
-	resultStore[secondResult]=$secondResult
+	resultStore[1]=$secondResult
 	thirdExpression
 
 }
 function thirdExpression(){
 	#Expression is c+a/b
 	thirdResult=`expr "scale=2;$thirdNumber+$firstNumber/$secondNumber" | bc -l`
-	resultStore[thirdResult]=$thirdResult
+	resultStore[2]=$thirdResult
 	fourthExpression
 
 }
 function fourthExpression(){
 	#Expression is a%b+c
 	fourthResult=`expr "scale=2;$firstNumber%$secondNumber+$thirdNumber" | bc -l`
-	resultStore[fourthResult]=$fourthResult
+	resultStore[3]=$fourthResult
+	storeIntoArray
+}
+function storeIntoArray(){
+	for(( index=0; index<${#resultStore[@]}; index++ ))
+	do
+		resultStoreInArray[index]=${resultStore[$index]}
+	done
 }
 getInputs
-echo ${resultStore[@]}
-echo ${!resultStore[@]}
-
-
