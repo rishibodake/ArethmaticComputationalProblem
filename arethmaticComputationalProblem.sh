@@ -61,21 +61,22 @@ function desendingArraySorting(){
 echo "array in desending order => ${resultStoreInArray[@]}"
 }
 function ascendingArraySorting(){
-	for (( index=0; index<${#resultStoreInArray[@]}; index++ ))
+   for (( index=0; index<${#resultStoreInArray[@]}; index++ ))
     do
        temp=0
-       for (( innerIndex=0; innerIndex<${#resultStoreInArray[@]}; innerIndex++ ))
+       for (( innerIndex=0; innerIndex<${#resultStoreInArray[@]}; $
        do
-          if [[ ${resultStoreInArray[innerIndex]} -gt ${resultStoreInArray[index]} ]]
+          if [[ ${resultStoreInArray[innerIndex]%.*} -gt ${resultS$
           then
-				 temp=${resultStoreInArray[index]}
-             resultStoreInArray[index]=${resultStoreInArray[innerIndex]}
+             temp=${resultStoreInArray[index]}
+             resultStoreInArray[index]=${resultStoreInArray[innerI$
              resultStoreInArray[innerIndex]=$temp
           fi
        done
     done
  echo "array in Ascending order => ${resultStoreInArray[@]}"
 }
+
 
 getInputs
 desendingArraySorting
