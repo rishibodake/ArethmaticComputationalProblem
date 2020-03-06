@@ -24,5 +24,11 @@ function thirdExpression(){
 	getInputs
 	thirdResult=`expr "scale=2;$thirdNumber+$firstNumber/$secondNumber" | bc -l`
 }
-thirdExpression
+function fourthExpression(){
+	#Expression is a%b+c
+	getInputs
+	fourthResult=`expr "scale=2;$firstNumber%$secondNumber+$thirdNumber" | bc -l`
+}
+fourthExpression
+
 
