@@ -27,7 +27,7 @@ function secondExpression(){
 }
 function thirdExpression(){
 	#Expression is c+a/b
-	thirdResult=$(($thirdNumber+$firstNumber/$secondNumber))
+	thirdResult=$(echo "scale=2; $thirdNumber + $firstNumber / $secondNumber" | bc )
 	resultStore[2]=$thirdResult
 	fourthExpression
 
@@ -50,7 +50,7 @@ function desendingArraySorting(){
 		temp=0
 		for (( innerIndex=0; innerIndex<${#resultStoreInArray[@]}; innerIndex++ ))
 		do
-			if [[ ${resultStoreInArray[innerIndex]} -lt ${resultStoreInArray[index]} ]]
+			if [[ ${resultStoreInArray[innerIndex]%.*} -lt ${resultStoreInArray[index]%.*} ]]
 			then
 				temp=${resultStoreInArray[index]}
 				resultStoreInArray[index]=${resultStoreInArray[innerIndex]}
@@ -66,7 +66,7 @@ function ascendingArraySorting(){
        temp=0
        for (( innerIndex=0; innerIndex<${#resultStoreInArray[@]}; innerIndex++ ))
        do
-          if [[ ${resultStoreInArray[innerIndex]} -gt ${resultStoreInArray[index]} ]]
+          if [[ ${resultStoreInArray[innerIndex]%.*} -gt ${resultStoreInArray[index]%.*} ]]
           then
 				 temp=${resultStoreInArray[index]}
              resultStoreInArray[index]=${resultStoreInArray[innerIndex]}
