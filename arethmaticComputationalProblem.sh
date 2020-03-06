@@ -27,7 +27,7 @@ function secondExpression(){
 }
 function thirdExpression(){
 	#Expression is c+a/b
-	thirdResult=$(($thirdNumber+$firstNumber/$secondNumber))
+	thirdResult=$(echo "scale=2; $thirdNumber + $firstNumber / $secondNumber" | bc )
 	resultStore[2]=$thirdResult
 	fourthExpression
 
