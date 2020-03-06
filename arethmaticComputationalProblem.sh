@@ -14,4 +14,9 @@ function firstExpression(){
 	getInputs
 	firstResult=$((($firstNumber+$secondNumber*$thirdNumber)))
 }
-firstExpression
+function secondExpression(){
+	#Expression is a*b+c
+	getInputs
+	secondResult=$((($firstNumber*$secondNumber+$thirdNumber)))
+}
+secondExpression
