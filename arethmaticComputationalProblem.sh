@@ -9,4 +9,9 @@ function getInputs(){
 	read -p "Enter second Number: " secondNumber
 	read -p "Enter third Number: " thirdNumber
 }
-getInputs
+function firstExpression(){
+	#Exrpession is a+b*c
+	getInputs
+	firstResult=$((($firstNumber+$secondNumber*$thirdNumber)))
+}
+firstExpression
