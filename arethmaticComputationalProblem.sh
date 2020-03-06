@@ -14,27 +14,27 @@ function getInputs(){
 }
 function firstExpression(){
 	#Exrpession is a+b*c
-	firstResult=$((($firstNumber+$secondNumber*$thirdNumber)))
+	firstResult=$(($firstNumber+$secondNumber*$thirdNumber))
 	resultStore[0]=$firstResult
 	secondExpression
 }
 function secondExpression(){
 	#Expression is a*b+c
-	secondResult=$((($firstNumber*$secondNumber+$thirdNumber)))
+	secondResult=$(($firstNumber*$secondNumber+$thirdNumber))
 	resultStore[1]=$secondResult
 	thirdExpression
 
 }
 function thirdExpression(){
 	#Expression is c+a/b
-	thirdResult=`expr "scale=2;$thirdNumber+$firstNumber/$secondNumber" | bc -l`
+	thirdResult=$(($thirdNumber+$firstNumber/$secondNumber))
 	resultStore[2]=$thirdResult
 	fourthExpression
 
 }
 function fourthExpression(){
 	#Expression is a%b+c
-	fourthResult=`expr "scale=2;$firstNumber%$secondNumber+$thirdNumber" | bc -l`
+	fourthResult=$(($firstNumber%$secondNumber+$thirdNumber))
 	resultStore[3]=$fourthResult
 	storeIntoArray
 }
@@ -44,4 +44,21 @@ function storeIntoArray(){
 		resultStoreInArray[index]=${resultStore[$index]}
 	done
 }
+function desendingArraySorting(){
+	for (( index=0; index<${#resultStoreInArray[@]}; index++ ))
+	do
+		temp=0
+		for (( innerIndex=0; innerIndex<${#resultStoreInArray[@]}; innerIndex++ ))
+		do
+			if [[ ${resultStoreInArray[innerIndex]} -lt ${resultStoreInArray[index]} ]]
+			then
+				temp=${resultStoreInArray[index]}
+				resultStoreInArray[index]=${resultStoreInArray[innerIndex]}
+				resultStoreInArray[innerIndex]=$temp
+			fi
+		done
+	done
+echo "array in desending order => ${resultStoreInArray[@]}"
+}
 getInputs
+desendingArraySorting
