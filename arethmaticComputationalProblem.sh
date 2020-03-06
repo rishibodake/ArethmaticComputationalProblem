@@ -45,20 +45,20 @@ function storeIntoArray(){
 	done
 }
 function desendingArraySorting(){
-	for (( index=0; index<${#resultStoreInArray[@]}; index++ ))
-	do
-		temp=0
-		for (( innerIndex=0; innerIndex<${#resultStoreInArray[@]}; innerIndex++ ))
-		do
-			if [[ ${resultStoreInArray[innerIndex]} -lt ${resultStoreInArray[index]} ]]
-			then
-				temp=${resultStoreInArray[index]}
-				resultStoreInArray[index]=${resultStoreInArray[innerIndex]}
-				resultStoreInArray[innerIndex]=$temp
-			fi
-		done
-	done
+   for (( index=0; index<${#resultStoreInArray[@]}; index++ ))
+   do
+      temp=0
+      for (( innerIndex=0; innerIndex<${#resultStoreInArray[@]}; i$
+      do
+         if [[ ${resultStoreInArray[innerIndex]%.*} -lt ${resultSt$
+         then
+            temp=${resultStoreInArray[index]}
+            resultStoreInArray[index]=${resultStoreInArray[innerIn$
+            resultStoreInArray[innerIndex]=$temp
+         fi
+      done
+   done
 echo "array in desending order => ${resultStoreInArray[@]}"
-}
+
 getInputs
 desendingArraySorting
